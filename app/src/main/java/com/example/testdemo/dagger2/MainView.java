@@ -6,4 +6,5 @@ package com.example.testdemo.dagger2;
  * 文件描述：
  */
 public interface MainView {
+
 }
