@@ -21,7 +21,7 @@ public class PlatformMerchant implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         Log.d("sell", "动态代理");
-        method.invoke(pingtai,args);
+        method.invoke(pingtai, args);
         return null;
     }
 }

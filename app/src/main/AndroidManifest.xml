@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.testdemo.viewDispatchEvent.DispatchEventActivity"></activity>
+        <activity android:name="com.example.testdemo.kotlin.KotlinActivity"></activity>
+        <activity android:name="com.example.testdemo.viewDispatchEvent.DispatchEventActivity" />
         <activity android:name="com.example.testdemo.proxy.ProxyActivity" />
         <activity android:name="com.example.testdemo.dagger2.MainActivity" />
         <activity android:name="com.example.testdemo.LauncherActivity">
