@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.test.R;
 import com.example.testdemo.custom_view.CustomViewActivity;
+import com.example.testdemo.kotlin.CoroutinesActivity;
 import com.example.testdemo.kotlin.KotlinActivity;
 import com.example.testdemo.proxy.ProxyActivity;
 import com.example.testdemo.viewDispatchEvent.DispatchEventActivity;
@@ -37,10 +38,14 @@ public class LauncherActivity extends AppCompatActivity {
 //                Intent intent = new Intent(LauncherActivity.this, DispatchEventActivity.class);
 //                startActivity(intent);
 
-                Intent intent = new Intent(LauncherActivity.this, CustomViewActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(LauncherActivity.this, CoroutinesActivity.class);
+//                startActivity(intent);
             }
         });
+
+        Intent intent = new Intent(LauncherActivity.this, CoroutinesActivity.class);
+        startActivity(intent);
+        finish();
 
     }
 }
