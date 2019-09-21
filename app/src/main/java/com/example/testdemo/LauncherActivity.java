@@ -3,13 +3,18 @@ package com.example.testdemo;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.test.R;
+import com.example.testdemo.custom_view.CustomViewActivity;
 import com.example.testdemo.kotlin.KotlinActivity;
 import com.example.testdemo.proxy.ProxyActivity;
 import com.example.testdemo.viewDispatchEvent.DispatchEventActivity;
+
+import java.util.Random;
 
 public class LauncherActivity extends AppCompatActivity {
 
@@ -32,9 +37,10 @@ public class LauncherActivity extends AppCompatActivity {
 //                Intent intent = new Intent(LauncherActivity.this, DispatchEventActivity.class);
 //                startActivity(intent);
 
-                Intent intent = new Intent(LauncherActivity.this, KotlinActivity.class);
+                Intent intent = new Intent(LauncherActivity.this, CustomViewActivity.class);
                 startActivity(intent);
             }
         });
+
     }
 }

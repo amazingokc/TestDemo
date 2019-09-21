@@ -2,6 +2,7 @@ package com.example.testdemo.proxy;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.example.test.R;
 
@@ -25,5 +26,7 @@ public class ProxyActivity extends AppCompatActivity {
                 CarProducer.class.getInterfaces(),
                 platformMerchant);
         dynamicProxy.sell();
+
     }
+
 }
