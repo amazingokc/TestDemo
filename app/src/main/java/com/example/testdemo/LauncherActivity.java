@@ -13,6 +13,7 @@ import com.example.testdemo.custom_view.CustomViewActivity;
 import com.example.testdemo.kotlin.CoroutinesActivity;
 import com.example.testdemo.kotlin.KotlinActivity;
 import com.example.testdemo.proxy.ProxyActivity;
+import com.example.testdemo.reflect.ReflectActivity;
 import com.example.testdemo.viewDispatchEvent.DispatchEventActivity;
 
 import java.util.Random;
@@ -43,7 +44,7 @@ public class LauncherActivity extends AppCompatActivity {
             }
         });
 
-        Intent intent = new Intent(LauncherActivity.this, CoroutinesActivity.class);
+        Intent intent = new Intent(LauncherActivity.this, ReflectActivity.class);
         startActivity(intent);
         finish();
 
