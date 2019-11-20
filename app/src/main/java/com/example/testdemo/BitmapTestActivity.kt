@@ -7,12 +7,12 @@ import com.example.test.R
 
 class BitmapTestActivity : AppCompatActivity() {
 
-    lateinit var iv_bitmap:AppCompatImageView
+//    lateinit var iv_bitmap:AppCompatImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bitmap_test)
-        iv_bitmap = findViewById(R.id.iv_bitmap)
+//        iv_bitmap = findViewById(R.id.iv_bitmap)
 
     }
 }

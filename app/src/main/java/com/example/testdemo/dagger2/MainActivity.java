@@ -20,10 +20,10 @@ public class MainActivity extends AppCompatActivity implements MainView{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        DaggerMainComponet.builder()
-                .mainModule(new MainModule(this))
-                .build()
-                .inject(this);
+//        DaggerMainComponet.builder()
+//                .mainModule(new MainModule(this))
+//                .build()
+//                .inject(this);
 
     }
 }
