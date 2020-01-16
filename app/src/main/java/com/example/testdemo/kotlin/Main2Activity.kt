@@ -16,6 +16,19 @@ class Main2Activity : AppCompatActivity() {
         setContentView(R.layout.activity_main2)
 //        tv = findViewById(R.id.tv)
         setView(tv)
+
+        val a = tv?.let {
+            it.textSize = 14.0f
+            it.text = "文本"
+            it.text
+        }
+        LLog.d("onCreate11", a)
+
+        val b = tv.let ({ tv ->
+            tv.text = "111"
+        })
+
+        LLog.d("oncreateeee", b)
     }
 
     fun setView(tv: TextView?) {
