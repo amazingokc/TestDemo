@@ -52,10 +52,19 @@ public class LauncherActivity extends AppCompatActivity {
 
         Intent intent = new Intent(LauncherActivity.this, Main2Activity.class);
         startActivity(intent);
-        finish();
+//        finish();
 
 
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("111","222");
+    }
 
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+    }
 }
