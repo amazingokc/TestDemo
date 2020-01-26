@@ -13,6 +13,7 @@ import com.example.test.R;
 import com.example.testdemo.aidl.AIDLActivity;
 import com.example.testdemo.aidl.AIDLService;
 import com.example.testdemo.custom_view.CustomViewActivity;
+import com.example.testdemo.fragment_test.Main3Activity;
 import com.example.testdemo.kotlin.CoroutinesActivity;
 import com.example.testdemo.kotlin.KotlinActivity;
 import com.example.testdemo.kotlin.Main2Activity;
@@ -50,21 +51,12 @@ public class LauncherActivity extends AppCompatActivity {
             }
         });
 
-        Intent intent = new Intent(LauncherActivity.this, Main2Activity.class);
+        Intent intent = new Intent(LauncherActivity.this, Main3Activity.class);
         startActivity(intent);
-//        finish();
+        finish();
 
 
     }
 
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString("111","222");
-    }
 
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-    }
 }
