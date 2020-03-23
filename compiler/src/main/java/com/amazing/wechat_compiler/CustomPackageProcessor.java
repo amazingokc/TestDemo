@@ -33,6 +33,8 @@ public class CustomPackageProcessor extends AbstractProcessor {
 
                 CustomPackage customPackage = element.getAnnotation(CustomPackage.class);
                 String packageName = customPackage.packageName();
+
+                //some check
                 if (packageName.isEmpty()) {
                     throw new IllegalArgumentException("packageName can't be null or empty");
                 }
@@ -60,6 +62,7 @@ public class CustomPackageProcessor extends AbstractProcessor {
                         throw new IllegalArgumentException(typeElement.getQualifiedName() + " must don't have abstract method , but find " + field.toString());
                     }
                 }
+
                 //create class which named WXEntryActivity
                 TypeSpec WXEntryActivity = TypeSpec.classBuilder(typeElement.getSimpleName().toString())
                         .addModifiers(Modifier.PUBLIC)
