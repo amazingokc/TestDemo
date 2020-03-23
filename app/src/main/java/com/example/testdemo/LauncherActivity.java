@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.example.test.R;
 import com.example.testdemo.aidl.AIDLActivity;
 import com.example.testdemo.aidl.AIDLService;
+import com.example.testdemo.annotation.AnnotationTestActivity;
 import com.example.testdemo.custom_view.CustomViewActivity;
 import com.example.testdemo.kotlin.CoroutinesActivity;
 import com.example.testdemo.kotlin.KotlinActivity;
@@ -50,7 +51,7 @@ public class LauncherActivity extends AppCompatActivity {
             }
         });
 
-        Intent intent = new Intent(LauncherActivity.this, Main2Activity.class);
+        Intent intent = new Intent(LauncherActivity.this, AnnotationTestActivity.class);
         startActivity(intent);
 //        finish();
 

@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name="com.example.testdemo.annotation.AnnotationTestActivity"></activity>
         <activity android:name="com.example.testdemo.aidl.AIDLActivity" />
         <activity android:name="com.example.testdemo.kotlin.Main2Activity" />
         <activity android:name="com.example.testdemo.reflect.ReflectActivity" />
@@ -30,8 +30,7 @@
 
         <service
             android:name="com.example.testdemo.aidl.AIDLService"
-            android:process=".aidlservice"
-            />
+            android:process=".aidlservice" />
     </application>
 
 </manifest>
