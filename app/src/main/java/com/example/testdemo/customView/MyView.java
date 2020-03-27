@@ -90,5 +90,4 @@ public class MyView extends View {
         super.onDraw(canvas);
     }
 
-
 }
