@@ -7,8 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.ScrollView;
-import android.widget.TextView;
 
 import com.example.testdemo.LLog;
 
