@@ -13,7 +13,7 @@ import com.example.test.R;
 import com.example.testdemo.aidl.AIDLActivity;
 import com.example.testdemo.aidl.AIDLService;
 import com.example.testdemo.annotation.AnnotationTestActivity;
-import com.example.testdemo.custom_view.CustomViewActivity;
+import com.example.testdemo.customView.CustomViewActivity;
 import com.example.testdemo.kotlin.CoroutinesActivity;
 import com.example.testdemo.kotlin.KotlinActivity;
 import com.example.testdemo.kotlin.Main2Activity;
@@ -51,7 +51,7 @@ public class LauncherActivity extends AppCompatActivity {
             }
         });
 
-        Intent intent = new Intent(LauncherActivity.this, AnnotationTestActivity.class);
+        Intent intent = new Intent(this, CustomViewActivity.class);
         startActivity(intent);
 //        finish();
 

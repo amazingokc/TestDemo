@@ -1,4 +1,4 @@
-package com.example.testdemo.custom_view;
+package com.example.testdemo.customView;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +10,6 @@ public class CustomViewActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_custom_view);
+        setContentView(R.layout.activity_custom_view2);
     }
 }
