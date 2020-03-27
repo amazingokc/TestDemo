@@ -7,10 +7,9 @@
     tools:context="com.example.testdemo.customView.CustomViewActivity">
 
 
-    <com.example.testdemo.customView.MyView
-        android:background="@color/colorPrimary"
-        android:layout_width="50dp"
-        android:layout_height="50dp" />
+    <com.example.testdemo.customView.PieView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
 </RelativeLayout>

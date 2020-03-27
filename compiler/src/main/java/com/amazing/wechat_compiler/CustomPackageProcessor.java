@@ -1,7 +1,6 @@
 package com.amazing.wechat_compiler;
 
 import com.amazing.wechat_annotation.CustomPackage;
-import com.google.auto.service.AutoService;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.ParameterizedTypeName;
