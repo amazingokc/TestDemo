@@ -7,7 +7,7 @@
     tools:context="com.example.testdemo.customView.CustomViewActivity">
 
 
-    <com.example.testdemo.customView.PieView
+    <com.example.testdemo.customView.CustomVeiw2
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
