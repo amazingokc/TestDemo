@@ -50,7 +50,6 @@ public class CustomVeiw7 extends View {
         bigRadius = width / 2;
     }
 
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
