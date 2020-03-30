@@ -79,4 +79,7 @@ public class CustomVeiw7 extends View {
         }
     }
 
+
+
+
 }
