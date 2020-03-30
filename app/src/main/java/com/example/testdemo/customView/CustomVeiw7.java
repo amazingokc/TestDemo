@@ -62,7 +62,6 @@ public class CustomVeiw7 extends View {
     private void drawKuang(Canvas canvas) {
         Path path = new Path();
         int radius;
-
         for (int i = 1; i <= 5; i++) {
             radius = i * bigRadius / 5;
             path.reset();
