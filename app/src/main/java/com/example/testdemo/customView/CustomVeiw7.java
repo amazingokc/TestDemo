@@ -60,7 +60,6 @@ public class CustomVeiw7 extends View {
     }
 
     private void drawKuang(Canvas canvas) {
-        LLog.d("sasasa", 2 * Math.cos(60));
         Path path = new Path();
         int radius;
 
