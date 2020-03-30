@@ -42,7 +42,6 @@ public class CustomVeiw7 extends View {
     private int bigRadius;
     private float angle = (float) (2 * Math.PI / valueTypeCount);
 
-
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         super.onSizeChanged(w, h, oldw, oldh);
