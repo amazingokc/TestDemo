@@ -78,7 +78,6 @@ public class CustomVeiw7 extends View {
             canvas.drawPath(path, kuangPaint);
 
         }
-
     }
 
 }
