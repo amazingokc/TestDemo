@@ -23,7 +23,7 @@ public class CustomVeiw7 extends View {
         super(context, attrs, defStyleAttr);
     }
 
-    private Paint kuangPaint;
+    private Paint blackLinesPaint;
     private Paint valuePaint;
     private Paint pointPaint;
     private Paint valueTypePaint;
@@ -31,11 +31,11 @@ public class CustomVeiw7 extends View {
     private void init() {
         path = new Path();
 
-        kuangPaint = new Paint();
-        kuangPaint.setAntiAlias(true);
-        kuangPaint.setColor(Color.BLACK);
-        kuangPaint.setStyle(Paint.Style.STROKE);
-        kuangPaint.setStrokeWidth(2f);
+        blackLinesPaint = new Paint();
+        blackLinesPaint.setAntiAlias(true);
+        blackLinesPaint.setColor(Color.BLACK);
+        blackLinesPaint.setStyle(Paint.Style.STROKE);
+        blackLinesPaint.setStrokeWidth(2f);
 
         valuePaint = new Paint();
         valuePaint.setAntiAlias(true);
@@ -103,7 +103,7 @@ public class CustomVeiw7 extends View {
                 }
             }
             path.close();
-            canvas.drawPath(path, kuangPaint);
+            canvas.drawPath(path, blackLinesPaint);
         }
     }
 
@@ -111,14 +111,14 @@ public class CustomVeiw7 extends View {
     private void drawLines(Canvas canvas) {
         path.moveTo(-bigRadius / 2, 0);
         path.lineTo(bigRadius / 2, 0);
-        canvas.drawPath(path, kuangPaint);
+        canvas.drawPath(path, blackLinesPaint);
 
         for (int i = 0; i < valueTypeCount; i++) {
             path.moveTo(0, 0);
             float x = (float) (bigRadius * Math.cos(angle * i));
             float y = (float) (bigRadius * Math.sin(angle * i));
             path.lineTo(x, y);
-            canvas.drawPath(path, kuangPaint);
+            canvas.drawPath(path, blackLinesPaint);
         }
     }
 
