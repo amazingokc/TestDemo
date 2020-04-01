@@ -35,6 +35,7 @@ public class CustomVeiw4 extends View {
     private Bitmap bitmap;
     private Rect src;
     private Rect dst;
+    private int right = 0;
 
     private void init() {
         paint = new Paint();
@@ -60,22 +61,9 @@ public class CustomVeiw4 extends View {
 
         canvas.drawBitmap(bitmap, src, dst, null);
         if (right < bitmap.getWidth()) {
-            handler.sendEmptyMessageDelayed(10, 10);
+            postInvalidateDelayed(10);
         }
     }
 
-    private int right = 0;
-
-
-    @SuppressWarnings("all")
-    private Handler handler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if (msg.what == 10) {
-                invalidate();
-            }
-        }
-    };
 
 }
