@@ -50,7 +50,7 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
     //手势缩放最大与最小倍数
     private float maxScale;
     private float minScale;
-
+    //手势缩放监听
     private ScaleGestureDetector scaleGestureDetector;
 
     @Override
@@ -123,6 +123,12 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
     @Override
     public boolean onScale(ScaleGestureDetector detector) {
         float scaleFactor = detector.getScaleFactor();
+        if (scaleFactor < 1.0f && getCurrentScale() < minScale * 0.8) {
+            scaleFactor = 1.0f;
+        }
+        if (scaleFactor > 1.0f && getCurrentScale() > maxScale * 1.4) {
+            scaleFactor = 1.0f;
+        }
         matrix.postScale(scaleFactor, scaleFactor, width / 2, height / 2);
         setImageMatrix(matrix);
         return true;
