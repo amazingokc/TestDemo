@@ -7,10 +7,12 @@
     tools:context="com.example.testdemo.customView.CustomViewActivity">
 
 
-    <com.example.testdemo.customView.CustomVeiw7
+    <com.example.testdemo.customView.ZoomImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_centerInParent="true"
-        android:layout_width="280dp"
-        android:layout_height="280dp" />
+        android:scaleType="matrix"
+        android:src="@drawable/zoom_imageview" />
 
 
 </RelativeLayout>
