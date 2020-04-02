@@ -4,10 +4,14 @@ import android.content.Context;
 import android.graphics.Matrix;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
+import android.view.View;
 import android.view.ViewTreeObserver;
 
 public class ZoomImageView extends android.support.v7.widget.AppCompatImageView implements
-        ViewTreeObserver.OnGlobalLayoutListener {
+        ViewTreeObserver.OnGlobalLayoutListener, ScaleGestureDetector.OnScaleGestureListener,
+        View.OnTouchListener {
     public ZoomImageView(Context context) {
         super(context);
     }
@@ -15,6 +19,8 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
     public ZoomImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
         matrix = new Matrix();
+        setOnTouchListener(this);
+        scaleGestureDetector = new ScaleGestureDetector(context, this);
     }
 
     public ZoomImageView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -44,6 +50,8 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
     //手势缩放最大与最小倍数
     private float maxScale;
     private float minScale;
+
+    private ScaleGestureDetector scaleGestureDetector;
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
@@ -83,7 +91,7 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
         float disY = 0;
 
         //缩放
-        matrix.setScale(scale, scale, dw / 2, dh / 2);
+        matrix.postScale(scale, scale, dw / 2, dh / 2);
         //计算X轴移动距离
         if (width < dw) {
             disX = (Math.min(width, dw) / 2) - (Math.max(width, dw) / 2);
@@ -102,6 +110,53 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
 
         maxScale = 3 * scale;
         minScale = scale / 2;
+
     }
 
+    private float getCurrentScale() {
+        float[] values = new float[9];
+        matrix.getValues(values);
+        return values[Matrix.MSCALE_X];
+    }
+
+
+    @Override
+    public boolean onScale(ScaleGestureDetector detector) {
+        float scaleFactor = detector.getScaleFactor();
+        matrix.postScale(scaleFactor, scaleFactor, width / 2, height / 2);
+        setImageMatrix(matrix);
+        return true;
+    }
+
+    @Override
+    public boolean onScaleBegin(ScaleGestureDetector detector) {
+        return true;
+    }
+
+    @Override
+    public void onScaleEnd(ScaleGestureDetector detector) {
+
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        scaleGestureDetector.onTouchEvent(event);
+        switch (event.getAction()) {
+            case MotionEvent.ACTION_DOWN:
+                break;
+            case MotionEvent.ACTION_UP:
+                float scale = getCurrentScale();
+                //如果缩放倍数越界了，需要回到边界倍数
+                if (scale > maxScale) {
+                    matrix.postScale(maxScale / scale, maxScale / scale, width / 2, height / 2);
+                    setImageMatrix(matrix);
+                } else if (scale < minScale) {
+                    matrix.postScale(minScale / scale, minScale / scale, width / 2, height / 2);
+                    setImageMatrix(matrix);
+                }
+                break;
+            default:
+        }
+        return true;
+    }
 }
