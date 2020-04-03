@@ -320,11 +320,11 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
         currentX /= pointCount;
         currentY /= pointCount;
 
-//        if (pointCount != lastPointCount) {
-//            isCanDrag = false;
-//            lastX = currentX;
-//            lastY = currentY;
-//        }
+        if (pointCount != lastPointCount) {
+            lastPointCount = pointCount;
+            lastX =0;
+            lastY = 0;
+        }
 
 
         LLog.d("adsadewewqewq", event.getPointerCount()
@@ -333,7 +333,6 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-
                 break;
             case MotionEvent.ACTION_MOVE:
                 if (lastX != 0) {
