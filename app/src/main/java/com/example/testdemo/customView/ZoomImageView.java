@@ -30,28 +30,30 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
 
             @Override
             public boolean onDoubleTap(MotionEvent e) {
-                if (getCurrentScale() < initScale) {
-                    toScale(initScale);
-                } else if (getCurrentScale() >= initScale && getCurrentScale() < midScale) {
-                    toScale(midScale);
-                } else if (getCurrentScale() == midScale) {
-                    toScale(initScale);
-                } else if (getCurrentScale() > midScale) {
-                    toScale(midScale);
+                if (gestureRunnable == null) {
+                    gestureRunnable = new GestureRunnable();
+                }
+                if (!isZooming) {
+                    targetScale = 0;
+                    if (getCurrentScale() < initScale) {
+                        targetScale = initScale;
+                        toScale = MAX_TO_SCALE;
+                    } else if (getCurrentScale() >= initScale && getCurrentScale() < midScale) {
+                        targetScale = midScale;
+                        toScale = MAX_TO_SCALE;
+                    } else if (getCurrentScale() == midScale) {
+                        targetScale = initScale;
+                        toScale = MIN_TO_SCALE;
+                    } else if (getCurrentScale() > midScale) {
+                        targetScale = midScale;
+                        toScale = MIN_TO_SCALE;
+                    }
+                    gestureRunnable.run();
                 }
                 return true;
             }
         });
 
-    }
-
-
-    private void toScale(float scale) {
-        float toScale = scale / getCurrentScale();
-        matrix.postScale(toScale, toScale, width / 2, height / 2);
-        setImageMatrix(matrix);
-
-        setBorderAndCenterWhenScale();
     }
 
     public ZoomImageView(Context context, AttributeSet attrs, int defStyleAttr) {
@@ -85,6 +87,42 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
     //手势缩放监听
     private ScaleGestureDetector scaleGestureDetector;
     private GestureDetector gestureDetector;
+
+    private GestureRunnable gestureRunnable;
+    private static final float MAX_TO_SCALE = 1.08f;
+    private static final float MIN_TO_SCALE = 0.92f;
+    private float toScale;
+    private boolean isZooming;
+    private float targetScale = 0;
+
+
+    private class GestureRunnable implements Runnable {
+
+        @Override
+        public void run() {
+            toScale(toScale, targetScale);
+
+            float currentScale = getCurrentScale();
+            if (currentScale != targetScale) {
+                postDelayed(gestureRunnable, 5);
+                isZooming = true;
+            } else {
+                isZooming = false;
+            }
+        }
+    }
+
+    //双击缩放
+    private void toScale(float scale, float targetScale) {
+        float toScale = scale;
+        if (Math.abs(getCurrentScale() - targetScale) < 0.05) {
+            toScale = targetScale / getCurrentScale();
+        }
+        matrix.postScale(toScale, toScale, width / 2, height / 2);
+        setImageMatrix(matrix);
+
+        setBorderAndCenterWhenScale();
+    }
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
@@ -158,10 +196,10 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
     @Override
     public boolean onScale(ScaleGestureDetector detector) {
         float scaleFactor = detector.getScaleFactor();
-        if (scaleFactor < 1.0f && getCurrentScale() < minScale * 0.8) {
+        if (scaleFactor < 1.0f && getCurrentScale() < minScale) {
             scaleFactor = 1.0f;
         }
-        if (scaleFactor > 1.0f && getCurrentScale() > maxScale * 1.4) {
+        if (scaleFactor > 1.0f && getCurrentScale() > maxScale) {
             scaleFactor = 1.0f;
         }
 
@@ -176,8 +214,6 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
     }
 
     private RectF rectF;
-    private float dx;
-    private float dy;
 
     private RectF getMatrixRectF() {
 
@@ -194,6 +230,7 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
         return rectF;
     }
 
+    //边界及居中处理
     private void setBorderAndCenterWhenScale() {
 
         rectF = getMatrixRectF();
@@ -204,8 +241,8 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
 
         float rectFWidth = rectF.width();
         float rectFHeighth = rectF.height();
-        dx = 0;
-        dy = 0;
+        float dx = 0;
+        float dy = 0;
         /**
          * 居中
          * */
@@ -264,15 +301,6 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
 
                 break;
             case MotionEvent.ACTION_UP:
-                float scale = getCurrentScale();
-                //如果缩放倍数越界了，需要回到边界倍数
-                if (scale > maxScale) {
-                    matrix.postScale(maxScale / scale, maxScale / scale, width / 2, height / 2);
-                    setImageMatrix(matrix);
-                } else if (scale < minScale) {
-                    matrix.postScale(minScale / scale, minScale / scale, width / 2, height / 2);
-                    setImageMatrix(matrix);
-                }
                 break;
             default:
         }
