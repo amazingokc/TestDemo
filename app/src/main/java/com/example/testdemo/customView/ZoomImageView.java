@@ -2,12 +2,16 @@ package com.example.testdemo.customView;
 
 import android.content.Context;
 import android.graphics.Matrix;
+import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewTreeObserver;
+
+import static android.view.GestureDetector.*;
 
 public class ZoomImageView extends android.support.v7.widget.AppCompatImageView implements
         ViewTreeObserver.OnGlobalLayoutListener, ScaleGestureDetector.OnScaleGestureListener,
@@ -21,11 +25,37 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
         matrix = new Matrix();
         setOnTouchListener(this);
         scaleGestureDetector = new ScaleGestureDetector(context, this);
+
+        gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
+
+            @Override
+            public boolean onDoubleTap(MotionEvent e) {
+                if (getCurrentScale() < initScale) {
+                    toScale(initScale);
+                } else if (getCurrentScale() >= initScale && getCurrentScale() < midScale) {
+                    toScale(midScale);
+                } else if (getCurrentScale() == midScale) {
+                    toScale(initScale);
+                } else if (getCurrentScale() > midScale) {
+                    toScale(midScale);
+                }
+                return true;
+            }
+        });
+
+    }
+
+
+    private void toScale(float scale) {
+        float toScale = scale / getCurrentScale();
+        matrix.postScale(toScale, toScale, width / 2, height / 2);
+        setImageMatrix(matrix);
+
+        setBorderAndCenterWhenScale();
     }
 
     public ZoomImageView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-
     }
 
     @Override
@@ -49,9 +79,12 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
 
     //手势缩放最大与最小倍数
     private float maxScale;
+    private float midScale;
+    private float initScale;
     private float minScale;
     //手势缩放监听
     private ScaleGestureDetector scaleGestureDetector;
+    private GestureDetector gestureDetector;
 
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
@@ -104,11 +137,13 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
         } else if (height > dh) {
             disY = (Math.max(height, dh) / 2) - (Math.min(height, dh) / 2);
         }
-        //移到居中效果
+
         matrix.postTranslate(disX, disY);
         setImageMatrix(matrix);
 
-        maxScale = 3 * scale;
+        maxScale = 4 * scale;
+        midScale = 2 * scale;
+        initScale = scale;
         minScale = scale / 2;
 
     }
@@ -129,9 +164,85 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
         if (scaleFactor > 1.0f && getCurrentScale() > maxScale * 1.4) {
             scaleFactor = 1.0f;
         }
-        matrix.postScale(scaleFactor, scaleFactor, width / 2, height / 2);
-        setImageMatrix(matrix);
+
+        if (scaleFactor != 1.0f) {
+            //已手指焦点为缩放中心点
+            matrix.postScale(scaleFactor, scaleFactor, detector.getFocusX(), detector.getFocusY());
+            setImageMatrix(matrix);
+
+            setBorderAndCenterWhenScale();
+        }
         return true;
+    }
+
+    private RectF rectF;
+    private float dx;
+    private float dy;
+
+    private RectF getMatrixRectF() {
+
+        Matrix matrix = this.matrix;
+        if (rectF == null) {
+            rectF = new RectF();
+        }
+
+        Drawable drawable = getDrawable();
+        if (drawable != null) {
+            rectF.set(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+            matrix.mapRect(rectF);
+        }
+        return rectF;
+    }
+
+    private void setBorderAndCenterWhenScale() {
+
+        rectF = getMatrixRectF();
+        float left = rectF.left;
+        float right = rectF.right;
+        float top = rectF.top;
+        float bottom = rectF.bottom;
+
+        float rectFWidth = rectF.width();
+        float rectFHeighth = rectF.height();
+        dx = 0;
+        dy = 0;
+        /**
+         * 居中
+         * */
+        if (rectFWidth <= width && left + (rectFWidth / 2) < width / 2) {
+            dx = (width / 2) - left - rectFWidth / 2;//右移
+        }
+        if (rectFWidth <= width && right - (rectFWidth / 2) > width / 2) {
+            dx = -(right - (rectFWidth / 2) - width / 2);//左移
+        }
+        //
+        if (rectFHeighth <= height && top + (rectFHeighth / 2) < height / 2) {
+            dy = (height / 2) - top - rectFHeighth / 2;//下移
+        }
+        if (rectFHeighth <= height && bottom - (rectFHeighth / 2) > height / 2) {
+            dy = -(bottom - (rectFHeighth / 2) - height / 2);//左移
+        }
+
+        /**
+         * 边界处理
+         * */
+        if (rectFWidth > width && left > 0) {
+            dx = -left;
+        }
+        if (rectFWidth > width && right < width) {
+            dx = width - right;
+        }
+        if (rectFHeighth > height && top > 0) {
+            dy = -top;
+        }
+        if (rectFHeighth > height && bottom < height) {
+            dy = height - bottom;
+        }
+
+        if (Math.abs(dx) > 0.01 || Math.abs(dy) > 0.01) {
+            matrix.postTranslate(dx, dy);
+            setImageMatrix(matrix);
+        }
     }
 
     @Override
@@ -146,9 +257,11 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+        gestureDetector.onTouchEvent(event);
         scaleGestureDetector.onTouchEvent(event);
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+
                 break;
             case MotionEvent.ACTION_UP:
                 float scale = getCurrentScale();

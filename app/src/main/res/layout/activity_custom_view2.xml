@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
         android:scaleType="matrix"
-        android:src="@drawable/zoom_imageview" />
+        android:src="@drawable/zoom_imageview3" />
 
 
 </RelativeLayout>
