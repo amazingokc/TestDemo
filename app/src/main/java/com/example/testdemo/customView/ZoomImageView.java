@@ -2,6 +2,7 @@ package com.example.testdemo.customView;
 
 import android.content.Context;
 import android.graphics.Matrix;
+import android.graphics.PointF;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
@@ -10,6 +11,8 @@ import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.view.ViewTreeObserver;
+
+import com.example.testdemo.LLog;
 
 import static android.view.GestureDetector.*;
 
@@ -284,26 +287,75 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
 
     @Override
     public boolean onScaleBegin(ScaleGestureDetector detector) {
+        isCanDrag = false;
         return true;
     }
 
     @Override
     public void onScaleEnd(ScaleGestureDetector detector) {
-
+        isCanDrag = true;
     }
+
+    private float currentX;
+    private float currentY;
+    private float lastX;
+    private float lastY;
+    private boolean isCanDrag = true;
+    private int pointCount;
+    private int lastPointCount;
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
         gestureDetector.onTouchEvent(event);
         scaleGestureDetector.onTouchEvent(event);
+
+        pointCount = event.getPointerCount();
+
+        currentX = 0;
+        currentY = 0;
+        for (int i = 0; i < pointCount; i++) {
+            currentX += event.getX(i);
+            currentY += event.getY(i);
+        }
+        currentX /= pointCount;
+        currentY /= pointCount;
+
+//        if (pointCount != lastPointCount) {
+//            isCanDrag = false;
+//            lastX = currentX;
+//            lastY = currentY;
+//        }
+
+
+        LLog.d("adsadewewqewq", event.getPointerCount()
+                + "\n" + "currentX:" + currentX
+                + "\n" + "currentY:" + currentY);
+
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
 
                 break;
+            case MotionEvent.ACTION_MOVE:
+                if (lastX != 0) {
+                    float dx = currentX - lastX;
+                    float dy = currentY - lastY;
+                    matrix.postTranslate(dx, dy);
+                    setImageMatrix(matrix);
+                }
+
+                lastX = currentX;
+                lastY = currentY;
+                break;
             case MotionEvent.ACTION_UP:
+                lastPointCount = 0;
+                lastX = 0;
+                lastY = 0;
                 break;
             default:
         }
+
+
         return true;
     }
+
 }
