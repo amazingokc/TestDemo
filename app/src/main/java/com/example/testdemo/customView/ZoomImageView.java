@@ -5,6 +5,7 @@ import android.graphics.Matrix;
 import android.graphics.PointF;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
+import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -20,7 +21,7 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
         ViewTreeObserver.OnGlobalLayoutListener, ScaleGestureDetector.OnScaleGestureListener,
         View.OnTouchListener {
     public ZoomImageView(Context context) {
-        super(context);
+        this(context, null);
     }
 
     public ZoomImageView(Context context, AttributeSet attrs) {
@@ -287,21 +288,15 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
 
     @Override
     public boolean onScaleBegin(ScaleGestureDetector detector) {
-        isCanDrag = false;
         return true;
     }
 
     @Override
     public void onScaleEnd(ScaleGestureDetector detector) {
-        isCanDrag = true;
     }
 
-    private float currentX;
-    private float currentY;
     private float lastX;
     private float lastY;
-    private boolean isCanDrag = true;
-    private int pointCount;
     private int lastPointCount;
 
     @Override
@@ -309,10 +304,10 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
         gestureDetector.onTouchEvent(event);
         scaleGestureDetector.onTouchEvent(event);
 
-        pointCount = event.getPointerCount();
+        int pointCount = event.getPointerCount();
 
-        currentX = 0;
-        currentY = 0;
+        float currentX = 0;
+        float currentY = 0;
         for (int i = 0; i < pointCount; i++) {
             currentX += event.getX(i);
             currentY += event.getY(i);
@@ -322,7 +317,7 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
 
         if (pointCount != lastPointCount) {
             lastPointCount = pointCount;
-            lastX =0;
+            lastX = 0;
             lastY = 0;
         }
 
@@ -331,15 +326,28 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
                 + "\n" + "currentX:" + currentX
                 + "\n" + "currentY:" + currentY);
 
+        RectF rectF = getMatrixRectF();
+
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
+                if ((rectF.width() > width + 0.01 || rectF.height() > height + 0.01)) {
+                    if (getParent() instanceof ViewPager) {
+                        getParent().requestDisallowInterceptTouchEvent(true);
+                    }
+                }
                 break;
             case MotionEvent.ACTION_MOVE:
+                if ((rectF.width() > width + 0.01 || rectF.height() > height + 0.01)) {
+                    if (getParent() instanceof ViewPager) {
+                        getParent().requestDisallowInterceptTouchEvent(true);
+                    }
+                }
                 if (lastX != 0) {
                     float dx = currentX - lastX;
                     float dy = currentY - lastY;
                     matrix.postTranslate(dx, dy);
                     setImageMatrix(matrix);
+                    setBorderAndCenterWhenScale();
                 }
 
                 lastX = currentX;
@@ -352,7 +360,6 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
                 break;
             default:
         }
-
 
         return true;
     }
