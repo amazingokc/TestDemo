@@ -7,17 +7,25 @@
     tools:context="com.example.testdemo.customView.CustomViewActivity">
 
 
-<!--    <com.example.testdemo.customView.ZoomImageView-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"-->
-<!--        android:layout_centerInParent="true"-->
-<!--        android:scaleType="matrix"-->
-<!--        android:src="@drawable/zoom_imageview" />-->
+    <!--    <com.example.testdemo.customView.ZoomImageView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        android:layout_centerInParent="true"-->
+    <!--        android:scaleType="matrix"-->
+    <!--        android:src="@drawable/zoom_imageview3" />-->
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager"
+    <com.example.testdemo.customView.MyViewGroup
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="@color/colorAccent">
+
+        <com.example.testdemo.customView.MyChildView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerInParent="true"
+            android:background="@color/colorPrimary" />
+
+    </com.example.testdemo.customView.MyViewGroup>
 
 
 </RelativeLayout>

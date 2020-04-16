@@ -358,6 +358,9 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
                 lastX = 0;
                 lastY = 0;
                 break;
+            case MotionEvent.ACTION_CANCEL:
+                LLog.d("MotionEvent.ACTION_CANCEL","MotionEvent.ACTION_CANCEL");
+                break;
             default:
         }
 
