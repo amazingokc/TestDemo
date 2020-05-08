@@ -50,4 +50,11 @@ dependencies {
     implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:5.4.0'
     implementation project(':annotation')
     annotationProcessor project(':compiler')
+
+    //网络请求依赖
+    api 'com.squareup.okio:okio:1.14.0'
+    api 'com.squareup.okhttp3:okhttp:3.10.0'
+    api 'com.squareup.retrofit2:retrofit:2.4.0'
+    api 'com.squareup.retrofit2:converter-scalars:2.3.0'
+    api 'com.squareup.retrofit2:converter-gson:2.4.0'
 }
