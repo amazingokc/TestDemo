@@ -27,23 +27,28 @@
 
     <!--    </com.example.testdemo.customView.MyViewGroup>-->
 
-    <com.example.testdemo.customView.RoundRelativelaout
-        android:layout_width="wrap_content"
+<!--    <com.example.testdemo.customView.RoundRelativelaout-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        app:leftTopRadius="100dp"-->
+<!--        app:rightTopRadius="100dp"-->
+<!--        app:leftBottomRadius="100dp"-->
+<!--        app:rightBottomRadius="100dp"-->
+<!--        >-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="300dp"-->
+<!--            android:layout_height="300dp"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            android:src="@drawable/zoom_imageview" />-->
+
+<!--    </com.example.testdemo.customView.RoundRelativelaout>-->
+
+    <com.example.testdemo.customView.CustomView8
+        android:layout_width="50dp"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        app:leftTopRadius="100dp"
-        app:rightTopRadius="100dp"
-        app:leftBottomRadius="100dp"
-        app:rightBottomRadius="100dp"
-        >
-
-        <ImageView
-            android:layout_width="300dp"
-            android:layout_height="300dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/zoom_imageview" />
-
-    </com.example.testdemo.customView.RoundRelativelaout>
+        android:background="@color/colorAccent"/>
 
 
 </RelativeLayout>
