@@ -52,6 +52,7 @@ public class LauncherActivity extends AppCompatActivity {
         });
 
 
+
         Intent intent = new Intent(this, CustomViewActivity.class);
         startActivity(intent);
         finish();

@@ -332,16 +332,18 @@ public class ZoomImageView extends android.support.v7.widget.AppCompatImageView 
             case MotionEvent.ACTION_DOWN:
                 if ((rectF.width() > width + 0.01 || rectF.height() > height + 0.01)) {
                     if (getParent() instanceof ViewPager) {
+                        //禁止父类拦截事件
                         getParent().requestDisallowInterceptTouchEvent(true);
                     }
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
-                if ((rectF.width() > width + 0.01 || rectF.height() > height + 0.01)) {
-                    if (getParent() instanceof ViewPager) {
-                        getParent().requestDisallowInterceptTouchEvent(true);
-                    }
-                }
+//                if ((rectF.width() > width + 0.01 || rectF.height() > height + 0.01)) {
+//                    if (getParent() instanceof ViewPager) {
+//                        //禁止父类拦截事件
+//                        getParent().requestDisallowInterceptTouchEvent(true);
+//                    }
+//                }
                 if (lastX != 0) {
                     float dx = currentX - lastX;
                     float dy = currentY - lastY;
