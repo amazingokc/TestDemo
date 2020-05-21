@@ -13,6 +13,7 @@ import com.example.test.R;
 import com.example.testdemo.aidl.AIDLActivity;
 import com.example.testdemo.aidl.AIDLService;
 import com.example.testdemo.annotation.AnnotationTestActivity;
+import com.example.testdemo.collection.CollectionActivity;
 import com.example.testdemo.customView.CustomViewActivity;
 import com.example.testdemo.kotlin.CoroutinesActivity;
 import com.example.testdemo.kotlin.KotlinActivity;
@@ -48,22 +49,20 @@ public class LauncherActivity extends AppCompatActivity {
 
 //                Intent intent = new Intent(LauncherActivity.this, CoroutinesActivity.class);
 //                startActivity(intent);
+
             }
         });
 
 
-
-        Intent intent = new Intent(this, CustomViewActivity.class);
+        Intent intent = new Intent(this, CollectionActivity.class);
         startActivity(intent);
         finish();
-
-
     }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString("111","222");
+        outState.putString("111", "222");
     }
 
     @Override

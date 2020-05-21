@@ -23,7 +23,7 @@ class AIDLService : Service() {
         return connectAidl.asBinder()
     }
 
-    private val connectAidl: ConnectAidl = object : Stub() {
+    private val connectAidl = object : Stub() {
         override fun connect() {
             this@AIDLService.isConnect = true
             handler.post { Toast.makeText(this@AIDLService, "connect", Toast.LENGTH_SHORT).show() }
