@@ -54,7 +54,7 @@ public class LauncherActivity extends AppCompatActivity {
         });
 
 
-        Intent intent = new Intent(this, CollectionActivity.class);
+        Intent intent = new Intent(this, CoroutinesActivity.class);
         startActivity(intent);
         finish();
     }

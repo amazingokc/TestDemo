@@ -39,14 +39,28 @@ open class CoroutinesActivity : AppCompatActivity() {
 ////            LLog.d(TAG, "7")
 ////        }
 //
-        var activity: AppCompatActivity = CoroutinesActivity()
+//        var activity: AppCompatActivity = CoroutinesActivity()
 //        if (activity is KotlinActivity) {
 //            activity.aaaa()
 //        }
 
 //        (activity as? CoroutinesActivity).aaaa()
 //        (activity as KotlinActivity)?.aaaa()
-        (activity as? KotlinActivity)?.aaaa()
+//        (activity as? KotlinActivity)?.aaaa()
+
+
+        repeat(20) {
+            GlobalScope.launch {
+                //开启协程后，先打印一下进程名称和进程id
+                println(
+                        "IO: " +
+                                "threadName = " + Thread.currentThread().name
+                                + " threadId = " + Thread.currentThread().id
+                )
+                delay(1000L)
+
+            }
+        }
     }
 
     suspend fun main() {
