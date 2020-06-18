@@ -5,13 +5,11 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.PointF;
-import android.support.annotation.Nullable;
+
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-
-import com.example.testdemo.LLog;
 
 public class CustomVeiwBezier1 extends View {
     public CustomVeiwBezier1(Context context) {

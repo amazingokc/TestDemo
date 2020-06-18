@@ -2,10 +2,9 @@ package com.example.testdemo.customView;
 
 import android.content.Context;
 import android.graphics.Matrix;
-import android.graphics.PointF;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -15,9 +14,7 @@ import android.view.ViewTreeObserver;
 
 import com.example.testdemo.LLog;
 
-import static android.view.GestureDetector.*;
-
-public class ZoomImageView extends android.support.v7.widget.AppCompatImageView implements
+public class ZoomImageView extends androidx.appcompat.widget.AppCompatImageView implements
         ViewTreeObserver.OnGlobalLayoutListener, ScaleGestureDetector.OnScaleGestureListener,
         View.OnTouchListener {
     public ZoomImageView(Context context) {

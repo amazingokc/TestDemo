@@ -1,12 +1,10 @@
 package com.example.testdemo.thread;
 
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.test.R;
-
-import java.util.concurrent.Executors;
 
 public class AsyncTaskActivity extends AppCompatActivity {
 

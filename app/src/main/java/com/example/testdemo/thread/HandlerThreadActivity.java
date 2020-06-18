@@ -3,7 +3,7 @@ package com.example.testdemo.thread;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.test.R;

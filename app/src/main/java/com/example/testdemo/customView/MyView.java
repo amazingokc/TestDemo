@@ -3,8 +3,8 @@ package com.example.testdemo.customView;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Build;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.View;
 

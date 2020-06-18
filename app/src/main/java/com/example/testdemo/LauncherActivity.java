@@ -1,30 +1,14 @@
 package com.example.testdemo;
 
-import android.app.ActivityManager;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.test.R;
-import com.example.testdemo.aidl.AIDLActivity;
-import com.example.testdemo.aidl.AIDLService;
-import com.example.testdemo.annotation.AnnotationTestActivity;
-import com.example.testdemo.collection.CollectionActivity;
-import com.example.testdemo.customView.CustomViewActivity;
-import com.example.testdemo.kotlin.CoroutinesActivity;
-import com.example.testdemo.kotlin.KotlinActivity;
-import com.example.testdemo.kotlin.Main2Activity;
 import com.example.testdemo.proxy.ProxyActivity;
-import com.example.testdemo.reflect.ReflectActivity;
-import com.example.testdemo.viewDispatchEvent.DispatchEventActivity;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import com.example.testdemo.PerformanceOptimization.RecyclerViewActivity;
 
 public class LauncherActivity extends AppCompatActivity {
 
@@ -54,7 +38,7 @@ public class LauncherActivity extends AppCompatActivity {
         });
 
 
-        Intent intent = new Intent(this, CoroutinesActivity.class);
+        Intent intent = new Intent(this, RecyclerViewActivity.class);
         startActivity(intent);
         finish();
     }

@@ -2,7 +2,7 @@ package com.example.testdemo.thread;
 
 import android.app.IntentService;
 import android.content.Intent;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 
 public class MyIntentService extends IntentService {
     /**

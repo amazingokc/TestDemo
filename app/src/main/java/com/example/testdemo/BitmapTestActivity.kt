@@ -1,8 +1,8 @@
 package com.example.testdemo
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.support.v7.widget.AppCompatImageView
+import androidx.appcompat.widget.AppCompatImageView
 import com.example.test.R
 
 class BitmapTestActivity : AppCompatActivity() {

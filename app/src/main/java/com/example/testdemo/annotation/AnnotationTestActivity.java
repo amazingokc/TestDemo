@@ -1,10 +1,9 @@
 package com.example.testdemo.annotation;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.test.R;
-import com.example.testdemo.LLog;
 
 @Person(age = 28, name = "xiaoming")
 public class AnnotationTestActivity extends AppCompatActivity {

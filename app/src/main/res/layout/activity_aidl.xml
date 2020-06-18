@@ -8,19 +8,19 @@
     android:orientation="vertical"
     tools:context="com.example.testdemo.aidl.AIDLActivity">
 
-    <android.support.v7.widget.AppCompatButton
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_connect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="connect" />
 
-    <android.support.v7.widget.AppCompatButton
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_disconnect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="disconnect" />
 
-    <android.support.v7.widget.AppCompatButton
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_isconnect"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

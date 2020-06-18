@@ -2,8 +2,8 @@ package com.example.testdemo.annotation.wechat;
 
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.amazing.wechat_annotation.CustomPackage;
 import com.example.test.BuildConfig;
