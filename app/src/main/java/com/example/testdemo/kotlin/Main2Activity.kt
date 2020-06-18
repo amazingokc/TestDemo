@@ -24,9 +24,14 @@ class Main2Activity : AppCompatActivity() {
         }
         LLog.d("onCreate11", a)
 
-        val b = tv.let ({ tv ->
+        val b = tv.let { tv ->
             tv.text = "111"
-        })
+
+        }
+
+        val c = tv.run {
+            text = "111"
+        }
 
         LLog.d("oncreateeee", b)
     }

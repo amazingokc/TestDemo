@@ -15,6 +15,8 @@ class KotlinActivity : CoroutinesActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_kotlin)
 
+        "77".sumBy{it.toInt()}
+
 //        var str: String = getString()
 //        Log.d("TTTT", "" + getString().length)
 //        button = findViewById(R.id.button)
