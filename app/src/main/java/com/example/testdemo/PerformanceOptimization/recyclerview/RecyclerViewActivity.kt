@@ -1,4 +1,4 @@
-package com.example.testdemo.PerformanceOptimization
+package com.example.testdemo.PerformanceOptimization.recyclerview
 
 import RecyclerViewAdapter
 import androidx.appcompat.app.AppCompatActivity

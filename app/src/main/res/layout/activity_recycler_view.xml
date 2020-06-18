@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.testdemo.PerformanceOptimization.RecyclerViewActivity">
+    tools:context="com.example.testdemo.PerformanceOptimization.recyclerview.RecyclerViewActivity">
 
-    <com.example.testdemo.PerformanceOptimization.MyRecyclerView
+    <com.example.testdemo.PerformanceOptimization.recyclerview.MyRecyclerView
         android:id="@+id/rv_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

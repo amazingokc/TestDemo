@@ -1,4 +1,4 @@
-package com.example.testdemo.PerformanceOptimization
+package com.example.testdemo.PerformanceOptimization.recyclerview
 
 import android.content.Context
 import android.util.AttributeSet

@@ -8,7 +8,7 @@ import android.view.View;
 import com.example.test.R;
 import com.example.testdemo.proxy.ProxyActivity;
 
-import com.example.testdemo.PerformanceOptimization.RecyclerViewActivity;
+import com.example.testdemo.PerformanceOptimization.recyclerview.RecyclerViewActivity;
 
 public class LauncherActivity extends AppCompatActivity {
 
