@@ -9,6 +9,7 @@ import com.example.test.R;
 import com.example.testdemo.proxy.ProxyActivity;
 
 import com.example.testdemo.PerformanceOptimization.recyclerview.RecyclerViewActivity;
+import com.example.testdemo.thread.HandlerThreadActivity;
 
 public class LauncherActivity extends AppCompatActivity {
 
@@ -38,7 +39,7 @@ public class LauncherActivity extends AppCompatActivity {
         });
 
 
-        Intent intent = new Intent(this, RecyclerViewActivity.class);
+        Intent intent = new Intent(this, HandlerThreadActivity.class);
         startActivity(intent);
         finish();
     }
