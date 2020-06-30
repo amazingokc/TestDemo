@@ -6,9 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.test.R;
+import com.example.testdemo.kotlin.KTXActivity;
 import com.example.testdemo.proxy.ProxyActivity;
-
-import com.example.testdemo.PerformanceOptimization.recyclerview.RecyclerViewActivity;
 
 public class LauncherActivity extends AppCompatActivity {
 
@@ -37,8 +36,7 @@ public class LauncherActivity extends AppCompatActivity {
             }
         });
 
-
-        Intent intent = new Intent(this, RecyclerViewActivity.class);
+        Intent intent = new Intent(this, KTXActivity.class);
         startActivity(intent);
         finish();
     }
