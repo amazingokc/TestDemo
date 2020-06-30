@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.test.R;
-import com.example.testdemo.kotlin.KTXActivity;
 import com.example.testdemo.proxy.ProxyActivity;
+
+import com.example.testdemo.PerformanceOptimization.recyclerview.RecyclerViewActivity;
+import com.example.testdemo.thread.HandlerThreadActivity;
 
 public class LauncherActivity extends AppCompatActivity {
 

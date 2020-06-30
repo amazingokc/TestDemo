@@ -27,7 +27,7 @@ public class CustomViewActivity extends AppCompatActivity {
 //
         viewPager.setAdapter(new PagerAdapter() {
             @Override
-            public int getCount() {
+            public int getCount()    {
                 return imgs.length;
             }
 
