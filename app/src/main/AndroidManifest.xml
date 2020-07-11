@@ -27,6 +27,7 @@
         <activity android:name="com.example.testdemo.viewDispatchEvent.DispatchEventActivity" />
         <activity android:name="com.example.testdemo.proxy.ProxyActivity" />
         <activity android:name="com.example.testdemo.dagger2.MainActivity" />
+        <activity android:name="com.example.testdemo.retrofit.CoroutineActivity"/>
         <activity android:name="com.example.testdemo.LauncherActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,5 +41,7 @@
             android:process=".aidlservice" />
         <service android:name="com.example.testdemo.thread.MyIntentService" />
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

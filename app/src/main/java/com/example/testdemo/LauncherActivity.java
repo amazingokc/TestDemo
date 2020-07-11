@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.test.R;
+import com.example.testdemo.dagger2.MainActivity;
 import com.example.testdemo.proxy.ProxyActivity;
 
 import com.example.testdemo.PerformanceOptimization.recyclerview.RecyclerViewActivity;
+import com.example.testdemo.retrofit.CoroutineActivity;
 import com.example.testdemo.thread.HandlerThreadActivity;
 
 public class LauncherActivity extends AppCompatActivity {
@@ -38,7 +40,7 @@ public class LauncherActivity extends AppCompatActivity {
             }
         });
 
-        Intent intent = new Intent(this, KTXActivity.class);
+        Intent intent = new Intent(this, CoroutineActivity.class);
         startActivity(intent);
         finish();
     }
