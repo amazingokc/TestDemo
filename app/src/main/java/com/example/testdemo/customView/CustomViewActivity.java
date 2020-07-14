@@ -23,36 +23,36 @@ public class CustomViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_view2);
 
-        ViewPager viewPager = findViewById(R.id.viewpager);
+//        ViewPager viewPager = findViewById(R.id.viewpager);
+////
+//        viewPager.setAdapter(new PagerAdapter() {
+//            @Override
+//            public int getCount()    {
+//                return imgs.length;
+//            }
 //
-        viewPager.setAdapter(new PagerAdapter() {
-            @Override
-            public int getCount()    {
-                return imgs.length;
-            }
-
-            @NonNull
-            @Override
-            public Object instantiateItem(@NonNull ViewGroup container, int position) {
-                ZoomImageView zoomImageView = new ZoomImageView(CustomViewActivity.this);
-                zoomImageView.setScaleType(ImageView.ScaleType.MATRIX);
-                zoomImageView.setImageResource(imgs[position]);
-                imageViews[position] = zoomImageView;
-                container.addView(zoomImageView);
-                return zoomImageView;
-            }
-
-            @Override
-            public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-//                super.destroyItem(container, position, object);
-                container.removeView(imageViews[position]);
-            }
-
-            @Override
-            public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
-                return view == o;
-            }
-        });
+//            @NonNull
+//            @Override
+//            public Object instantiateItem(@NonNull ViewGroup container, int position) {
+//                ZoomImageView zoomImageView = new ZoomImageView(CustomViewActivity.this);
+//                zoomImageView.setScaleType(ImageView.ScaleType.MATRIX);
+//                zoomImageView.setImageResource(imgs[position]);
+//                imageViews[position] = zoomImageView;
+//                container.addView(zoomImageView);
+//                return zoomImageView;
+//            }
+//
+//            @Override
+//            public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+////                super.destroyItem(container, position, object);
+//                container.removeView(imageViews[position]);
+//            }
+//
+//            @Override
+//            public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
+//                return view == o;
+//            }
+//        });
 
     }
 

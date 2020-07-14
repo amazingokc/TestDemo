@@ -21,7 +21,7 @@ open class CoroutineActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val retrofit = Retrofit.Builder()
-                .baseUrl("https://www.wanandroid.co")
+                .baseUrl("https://www.wanandroid.com")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
@@ -33,7 +33,7 @@ open class CoroutineActivity : AppCompatActivity() {
                     LLog.d("result___", "loading")
                     service.getInfos()
                 }
-                val baseResponse2 = GsonUtil.fromJson(responseBody.string(),
+                val baseResponse2 = GsonUtil.fromJson(responseBody.toString(),
                         TypeBuilder.newInstance(BaseResponse2::class.java)
                                 .addTypeParam(DataBean::class.java)
                                 .build())

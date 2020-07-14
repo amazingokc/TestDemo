@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.test.R;
+import com.example.testdemo.customView.CustomViewActivity;
 import com.example.testdemo.dagger2.MainActivity;
 import com.example.testdemo.proxy.ProxyActivity;
 
@@ -40,7 +41,7 @@ public class LauncherActivity extends AppCompatActivity {
             }
         });
 
-        Intent intent = new Intent(this, CoroutineActivity.class);
+        Intent intent = new Intent(this, CustomViewActivity.class);
         startActivity(intent);
         finish();
     }

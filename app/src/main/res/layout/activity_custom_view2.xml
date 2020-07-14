@@ -6,10 +6,10 @@
     android:layout_height="match_parent"
     tools:context="com.example.testdemo.customView.CustomViewActivity">
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewpager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+<!--    <androidx.viewpager.widget.ViewPager-->
+<!--        android:id="@+id/viewpager"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
 
 
 <!--    <com.example.testdemo.customView.ZoomImageView-->
@@ -54,6 +54,10 @@
     <!--        android:layout_width="50dp"-->
     <!--        android:layout_height="wrap_content"-->
     <!--        android:background="@color/colorAccent"/>-->
+
+    <com.example.testdemo.customView.hencoder.Practice01ClipRectView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 
 </RelativeLayout>
