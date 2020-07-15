@@ -9,6 +9,7 @@ import android.graphics.Camera;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
@@ -43,6 +44,10 @@ public class Practice14FlipboardView extends View {
         animator.setInterpolator(new LinearInterpolator());
         animator.setRepeatCount(ValueAnimator.INFINITE);
         animator.setRepeatMode(ValueAnimator.REVERSE);
+
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        float newZ = - displayMetrics.density * 6;
+        camera.setLocation(0, 0, newZ);
     }
 
     @Override
@@ -74,7 +79,11 @@ public class Practice14FlipboardView extends View {
         int x = centerX - bitmapWidth / 2;
         int y = centerY - bitmapHeight / 2;
 
+        // 第一遍绘制：上半部分
         canvas.save();
+        canvas.clipRect(0, 0, getWidth(), centerY);
+        canvas.drawBitmap(bitmap, x, y, paint);
+        canvas.restore();
 
         camera.save();
         camera.rotateX(degree);

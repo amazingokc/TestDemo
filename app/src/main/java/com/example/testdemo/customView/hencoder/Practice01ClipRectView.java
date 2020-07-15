@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -17,7 +18,7 @@ import com.example.test.R;
 public class Practice01ClipRectView extends View {
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     Bitmap bitmap;
-    Path path;
+    RectF rectF;
 
     public Practice01ClipRectView(Context context) {
         super(context);
@@ -33,7 +34,7 @@ public class Practice01ClipRectView extends View {
 
     {
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.maps);
-        path = new Path();
+        rectF = new RectF();
     }
 
     @Override
@@ -42,14 +43,16 @@ public class Practice01ClipRectView extends View {
 
         int left = (getWidth() - bitmap.getWidth()) / 2;
         int top = (getHeight() - bitmap.getHeight()) / 2;
+        int right = (left + bitmap.getWidth());
+        int bottom = (top + bitmap.getHeight());
 
-        path.addCircle(left + (float) bitmap.getWidth() / 2 + 50,
-                top + (float) bitmap.getWidth() / 2 +50,
-                (float) bitmap.getWidth() / 2,
-                Path.Direction.CW);
+
+
+        rectF.set(left + 50, top + 50, right - 50, bottom - 50);
 
         canvas.save();
-        canvas.clipPath(path);
+//        canvas.clipPath(path);
+        canvas.clipRect(rectF);
         canvas.drawBitmap(bitmap, left, top, paint);
         canvas.restore();
     }

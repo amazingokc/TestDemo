@@ -11,6 +11,7 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
@@ -42,13 +43,19 @@ public class Practice13CameraRotateHittingFaceView extends View {
 
     {
         bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.maps);
-        Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmap, bitmap.getWidth() * 2, bitmap.getHeight() * 2, true);
+        Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmap, bitmap.getWidth() * 2,
+                bitmap.getHeight() * 2, true);
         bitmap.recycle();
         bitmap = scaledBitmap;
 
         animator.setDuration(5000);
         animator.setInterpolator(new LinearInterpolator());
         animator.setRepeatCount(ValueAnimator.INFINITE);
+
+        //动态适配相机Z轴的大小（即与画板的距离）
+        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
+        float newZ = -displayMetrics.density * 6;
+        camera.setLocation(0, 0, newZ);
     }
 
     @Override
@@ -83,6 +90,7 @@ public class Practice13CameraRotateHittingFaceView extends View {
         camera.rotateX(degree);
         camera.getMatrix(matrix);
         camera.restore();
+        //因为矩阵不满足交换律，所以需要前乘与后乘结合才能回到原来的点
         matrix.preTranslate(-centerX, -centerY);
         matrix.postTranslate(centerX, centerY);
         canvas.save();
