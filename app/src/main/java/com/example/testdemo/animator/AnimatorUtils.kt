@@ -87,7 +87,6 @@ class AnimatorUtils {
         objectView.animate().translationX(700.0f).translationY(-700.0f).apply {
             duration = 3000
 
-            eval
             start()
         }
 
