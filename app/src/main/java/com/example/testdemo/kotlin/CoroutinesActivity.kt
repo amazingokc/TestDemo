@@ -19,9 +19,9 @@ open class CoroutinesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_coroutines)
 
-//        GlobalScope.launch {
-//
-//        }
+        GlobalScope.launch {
+
+        }
 //        GlobalScope.launch(Dispatchers.Main){
 //        LLog.d(TAG, "1")
 //           val job = GlobalScope.launch(Dispatchers.IO.plus(CoroutineName("amazingokc"))) {

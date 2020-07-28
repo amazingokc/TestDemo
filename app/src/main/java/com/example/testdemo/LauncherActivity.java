@@ -14,6 +14,12 @@ import com.example.testdemo.proxy.ProxyActivity;
 import com.example.testdemo.PerformanceOptimization.recyclerview.RecyclerViewActivity;
 import com.example.testdemo.retrofit.CoroutineActivity;
 import com.example.testdemo.thread.HandlerThreadActivity;
+import com.example.testdemo.tree.TreeActivity;
+
+import java.lang.ref.SoftReference;
+import java.lang.ref.WeakReference;
+
+import static java.lang.Thread.sleep;
 
 public class LauncherActivity extends AppCompatActivity {
 
@@ -42,9 +48,15 @@ public class LauncherActivity extends AppCompatActivity {
             }
         });
 
-        Intent intent = new Intent(this, AnimatorActivity.class);
+        Intent intent = new Intent(this, TreeActivity.class);
         startActivity(intent);
         finish();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
     }
 
     @Override
