@@ -8,7 +8,7 @@ import dagger.Provides;
  * 创建时间：2019-08-15 下午 4:21
  * 文件描述：
  */
-@Module
+//@Module
 public class MainModule {
 
     private final MainView mainView;
@@ -17,7 +17,7 @@ public class MainModule {
         this.mainView = mainView;
     }
 
-    @Provides
+//    @Provides
     MainView provideMianView() {
         return mainView;
     }

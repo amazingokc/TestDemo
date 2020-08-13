@@ -6,18 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.test.R;
-import com.example.testdemo.animator.AnimatorActivity;
-import com.example.testdemo.customView.CustomViewActivity;
-import com.example.testdemo.dagger2.MainActivity;
+import com.example.testdemo.dragFloatView.DragFloatViewActivity;
 import com.example.testdemo.proxy.ProxyActivity;
-
-import com.example.testdemo.PerformanceOptimization.recyclerview.RecyclerViewActivity;
-import com.example.testdemo.retrofit.CoroutineActivity;
-import com.example.testdemo.thread.HandlerThreadActivity;
-import com.example.testdemo.tree.TreeActivity;
-
-import java.lang.ref.SoftReference;
-import java.lang.ref.WeakReference;
 
 import static java.lang.Thread.sleep;
 
@@ -48,7 +38,7 @@ public class LauncherActivity extends AppCompatActivity {
             }
         });
 
-        Intent intent = new Intent(this, TreeActivity.class);
+        Intent intent = new Intent(this, DragFloatViewActivity.class);
         startActivity(intent);
         finish();
 
